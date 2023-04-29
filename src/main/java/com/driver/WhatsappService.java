@@ -1,5 +1,6 @@
 package com.driver;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -69,5 +70,22 @@ public class WhatsappService {
         }
 
         return whatsappRepository.removeUser(currGroup, user);
+    }
+
+    public String findMessage(Date start, Date end, int k) throws Exception {
+        HashMap<Message, User> messageUserHashMap = new HashMap<>();
+        HashMap<Integer, Message> integerMessageHashMap = new HashMap<>();
+        int cnt = 1;
+        for(Message message : messageUserHashMap.keySet()){
+            Date date = message.getTimestamp();
+            if(date.compareTo(start) > 0 && end.compareTo(date) > 0){
+                integerMessageHashMap.put(cnt++, message);
+            }
+        }
+        if(integerMessageHashMap.size() < k){
+            throw new Exception("K is greater than the number of messages");
+        }
+
+        return "SUCCESS";
     }
 }
