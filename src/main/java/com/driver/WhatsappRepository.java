@@ -106,7 +106,7 @@ public class WhatsappRepository {
 
     public String createUser(String name, String mobile) throws Exception{
         if(nameMobile.containsKey(mobile)){
-            throw new Exception();
+            throw new Exception("User already exists");
         }
         nameMobile.put(mobile, name);
         return "SUCCESS";
