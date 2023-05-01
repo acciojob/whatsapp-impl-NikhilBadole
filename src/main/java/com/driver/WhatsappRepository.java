@@ -30,6 +30,7 @@ public class WhatsappRepository {
         this.messageId = 0;
 
         this.nameMobile = new HashMap<>();
+        this.messageMap = new HashMap<>();
     }
 
     public HashMap<Group, List<User>> getGroupUserMap() {
